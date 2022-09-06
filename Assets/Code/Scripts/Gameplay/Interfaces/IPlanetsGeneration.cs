@@ -2,7 +2,9 @@ namespace GalconTechDemo.Gameplay
 {
     public interface IPlanetsGeneration
     {
-        public Planet GenerateNextPlanet(float minPlanetRadius, float maxPlanetRadius);
+        public void Init(float minPlanetScale, float maxPlanetScale);
+        public Planet GenerateNextPlanet();
+        public void Free();
     }
 }
 

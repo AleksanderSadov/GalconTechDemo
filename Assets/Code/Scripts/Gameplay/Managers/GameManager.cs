@@ -13,8 +13,8 @@ namespace GalconTechDemo.Gameplay
         {
             planetsGenerator.GenerateAllPlanets(
                 gameConfig.totalNumberOfPlanetsOnMap,
-                gameConfig.planetMinRadius,
-                gameConfig.planetMaxRadius,
+                gameConfig.planetMinScale,
+                gameConfig.planetMaxScale,
                 gameConfig.maxPlanetGenerationTries
             );
         }

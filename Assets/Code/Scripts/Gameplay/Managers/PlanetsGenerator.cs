@@ -6,20 +6,22 @@ namespace GalconTechDemo.Gameplay
     public class PlanetsGenerator : MonoBehaviour
     {
         [SerializeField]
-        private IPlanetsGeneration planetsGeneration;
+        private PlanetsGenerationMethod planetsGeneration;
 
         private void Awake()
         {
-            planetsGeneration = GetComponent<IPlanetsGeneration>();
+            planetsGeneration = GetComponent<PlanetsGenerationMethod>();
         }
 
         public void GenerateAllPlanets(
             int numberOfPlanets,
-            float minPlanetRadius,
-            float maxPlanetRadius,
+            float minPlanetScale,
+            float maxPlanetScale,
             int maxTries
         )
         {
+            planetsGeneration.Init(minPlanetScale, maxPlanetScale);
+
             int generatedPlanetsTriedCount = 0;
             while (generatedPlanetsTriedCount < numberOfPlanets)
             {
@@ -28,7 +30,7 @@ namespace GalconTechDemo.Gameplay
 
                 while (lastGeneratedPlanet == null && triesCount < maxTries)
                 {
-                    lastGeneratedPlanet = planetsGeneration.GenerateNextPlanet(minPlanetRadius, maxPlanetRadius);
+                    lastGeneratedPlanet = planetsGeneration.GenerateNextPlanet();
                     triesCount++;
                 }
 

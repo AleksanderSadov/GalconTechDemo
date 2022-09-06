@@ -7,8 +7,8 @@ namespace GalconTechDemo.Gameplay
     {
         [Header("Planets")]
         public int totalNumberOfPlanetsOnMap = 1;
-        public float planetMinRadius = 1.5f;
-        public float planetMaxRadius = 2.5f;
+        public float planetMinScale = 1.5f;
+        public float planetMaxScale = 2.5f;
 
         [Header("Optimization")]
         [Tooltip("Maximum tries for generating single planet on random map position without intersecting with other planets." +

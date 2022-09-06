@@ -6,7 +6,7 @@ namespace GalconTechDemo.Gameplay
     {
         public float GetRadius()
         {
-            return transform.localScale.x;
+            return GetComponent<SphereCollider>().radius * transform.localScale.x;
         }
     }
 }

@@ -1,20 +1,10 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace GalconTechDemo.Gameplay
 {
-    public class PlanetsGenerationVector : MonoBehaviour, IPlanetsGeneration
+    public class PlanetsGenerationVector : PlanetsGenerationMethod
     {
-        readonly Vector3 PLANE_DEFAULT_SIZE = new Vector3(10f, 0f, 10f);
-
-        public float spawnPointStep = 0.1f;
-
-        [SerializeField]
-        private Transform playablePlane;
-        [SerializeField]
-        private Planet planetPrefab;
-
-        public Planet GenerateNextPlanet(float minPlanetRadius, float maxPlanetRadius)
+        public override Planet GenerateNextPlanet()
         {
             Vector3 startingPoint = playablePlane.position;
 
@@ -24,10 +14,10 @@ namespace GalconTechDemo.Gameplay
             );
             Vector3 spawnPoint = startingPoint + randomVector;
 
-            return TrySpawnPlanet(spawnPoint, minPlanetRadius, maxPlanetRadius);
+            return TrySpawnPlanet(spawnPoint);
         }
 
-        private Planet TrySpawnPlanet(Vector3 currentPlanetCenter, float minPlanetRadius, float maxPlanetRadius)
+        private Planet TrySpawnPlanet(Vector3 currentPlanetCenter)
         {
             Collider[] hitColliders = Physics.OverlapSphere(currentPlanetCenter, maxPlanetRadius * 4, 1 << planetPrefab.gameObject.layer);
 
@@ -58,7 +48,7 @@ namespace GalconTechDemo.Gameplay
                 }
             }
 
-            float currentPlanetRandomRadius = Random.Range(minPlanetRadius, maxAllowedRadius);
+            float currentPlanetRandomScale = Random.Range(minPlanetScale, maxPlanetScale);
 
             Planet planet = Instantiate(
                 planetPrefab,
@@ -67,7 +57,7 @@ namespace GalconTechDemo.Gameplay
                 null
             );
 
-            planet.transform.localScale = Vector3.one * currentPlanetRandomRadius;
+            planet.transform.localScale = Vector3.one * currentPlanetRandomScale;
 
             return planet;
         }
@@ -75,9 +65,7 @@ namespace GalconTechDemo.Gameplay
         private Vector3 GetRandomVector(float maxWidth, float maxHeight)
         {
             float randomWidth = Random.Range(-maxWidth, maxWidth);
-            randomWidth = Mathf.Floor(randomWidth / spawnPointStep) * spawnPointStep;
             float randomHeight = Random.Range(-maxHeight, maxHeight);
-            randomHeight = Mathf.Floor(randomHeight / spawnPointStep) * spawnPointStep;
 
             Vector3 randomVector = new Vector3(randomWidth, randomHeight, 0.0f);
 
