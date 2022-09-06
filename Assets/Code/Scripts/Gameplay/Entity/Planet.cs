@@ -21,6 +21,11 @@ namespace GalconTechDemo.Gameplay
         }
         private float _currentShipsCount = 0f;
 
+        private void Awake()
+        {
+            SetRandomShipsOnStart();
+        }
+
         private void Update()
         {
             GenerateShips();
@@ -48,6 +53,11 @@ namespace GalconTechDemo.Gameplay
             {
                 _currentShipsCount += config.shipsGenerationSpeed * Time.deltaTime;
             }
+        }
+
+        private void SetRandomShipsOnStart()
+        {
+            _currentShipsCount = Random.Range(config.minShipsOnStart, config.maxShipsOnStart + 1);
         }
     }
 }
