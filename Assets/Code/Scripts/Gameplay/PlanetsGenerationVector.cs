@@ -15,14 +15,14 @@ namespace GalconTechDemo.Gameplay
         {
             Vector3 startingPoint = playablePlane.position;
 
-            float planetRadius = Random.Range(minPlanetRadius, maxPlanetRadius);
+            float currentPlanetRadius = Random.Range(minPlanetRadius, maxPlanetRadius);
             Vector3 randomVector = GetRandomVector(
                 playablePlane.localScale.x * PLANE_DEFAULT_SIZE.x / 2,
                 playablePlane.localScale.z * PLANE_DEFAULT_SIZE.z / 2
             );
             Vector3 spawnPoint = startingPoint + randomVector;
 
-            if (IsIntersectingWithAnotherPlanet(spawnPoint, planetRadius))
+            if (IsIntersectingWithAnotherPlanet(spawnPoint, currentPlanetRadius, maxPlanetRadius))
             {
                 return null;
             }
@@ -34,14 +34,14 @@ namespace GalconTechDemo.Gameplay
                 null
             );
 
-            planet.transform.localScale = Vector3.one * planetRadius;
+            planet.transform.localScale = Vector3.one * currentPlanetRadius;
 
             return planet;
         }
 
-        public bool IsIntersectingWithAnotherPlanet(Vector3 currentPlanetCenter, float currentPlanetRadius)
+        public bool IsIntersectingWithAnotherPlanet(Vector3 currentPlanetCenter, float currentPlanetRadius, float maxPlanetRadius)
         {
-            Collider[] hitColliders = Physics.OverlapSphere(currentPlanetCenter, currentPlanetRadius, 1 << planetPrefab.gameObject.layer);
+            Collider[] hitColliders = Physics.OverlapSphere(currentPlanetCenter, maxPlanetRadius * 4, 1 << planetPrefab.gameObject.layer);
 
             foreach (Collider collider in hitColliders)
             {

@@ -20,8 +20,8 @@ namespace GalconTechDemo.Gameplay
             int maxTries
         )
         {
-            int generatPlanetsTriedCount = 0;
-            while (generatPlanetsTriedCount < numberOfPlanets)
+            int generatedPlanetsTriedCount = 0;
+            while (generatedPlanetsTriedCount < numberOfPlanets)
             {
                 int triesCount = 0;
                 Planet lastGeneratedPlanet = null;
@@ -32,7 +32,7 @@ namespace GalconTechDemo.Gameplay
                     triesCount++;
                 }
 
-                generatPlanetsTriedCount++;
+                generatedPlanetsTriedCount++;
             }
         }
     }
