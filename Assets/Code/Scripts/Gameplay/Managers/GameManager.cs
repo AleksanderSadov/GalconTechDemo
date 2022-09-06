@@ -7,7 +7,7 @@ namespace GalconTechDemo.Gameplay
         public GameConfig gameConfig;
 
         [SerializeField]
-        private PlanetsGenerator planetsGenerator;
+        private PlanetsManager planetsGenerator;
         
         private void Start()
         {

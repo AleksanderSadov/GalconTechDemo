@@ -3,16 +3,16 @@ using UnityEngine;
 
 namespace GalconTechDemo.Gameplay
 {
-    public class PlanetsGenerationGrid : PlanetsGenerationMethod
+    public class PlanetsFindSpawnPositionGrid : PlanetsFindSpawnPosition
     {
         [System.Serializable]
-        private class SpawnPoint
+        private class GridPoint
         {
             public float x;
             public float y;
             public bool isFree = false;
 
-            public SpawnPoint(float x, float y, bool isFree)
+            public GridPoint(float x, float y, bool isFree)
             {
                 this.x = x;
                 this.y = y;
@@ -23,26 +23,40 @@ namespace GalconTechDemo.Gameplay
         [Tooltip("Grid step")]
         public float gridStep = 0.1f;
 
-        private List<SpawnPoint> spawnPoints;
+        private List<GridPoint> spawnPoints;
 
-        public override void Init(float minPlanetScale, float maxPlanetScale)
+        public override void Init(
+            float planetBaseRadius,
+            float minPlanetScale,
+            float maxPlanetScale,
+            LayerMask planetLayerMask,
+            Transform playablePlane
+        )
         {
-            base.Init(minPlanetScale, maxPlanetScale);
+            base.Init(
+                planetBaseRadius,
+                minPlanetScale,
+                maxPlanetScale,
+                planetLayerMask,
+                playablePlane
+            );
+
             GenerateSpawnPointsGrid(maxPlanetRadius);
         }
 
-        public override Planet GenerateNextPlanet()
+        public override bool GetNextPlanetSpawnPosition(out Vector3 spawnPosition)
         {
-            List<SpawnPoint> freeSpawnPoints = spawnPoints.FindAll(p => p.isFree);
+            List<GridPoint> freeSpawnPoints = spawnPoints.FindAll(p => p.isFree);
             if (freeSpawnPoints.Count > 0)
             {
                 int randomIndex = Random.Range(0, freeSpawnPoints.Count);
-                return TrySpawnPlanet(freeSpawnPoints[randomIndex]);
+                return TrySpawnPlanet(freeSpawnPoints[randomIndex], out spawnPosition);
             }
             else
             {
                 canTryMore = false;
-                return null;
+                spawnPosition = Vector3.zero;
+                return false;
             }
         }
 
@@ -52,11 +66,11 @@ namespace GalconTechDemo.Gameplay
             spawnPoints = null;
         }
 
-        private Planet TrySpawnPlanet(SpawnPoint spawnPoint)
+        private bool TrySpawnPlanet(GridPoint spawnPoint, out Vector3 spawnPosition)
         {
             Vector3 currentPlanetCenter = new Vector3(spawnPoint.x, spawnPoint.y, playablePlane.position.z);
 
-            Collider[] hitColliders = Physics.OverlapSphere(currentPlanetCenter, maxPlanetRadius * 4, 1 << planetPrefab.gameObject.layer);
+            Collider[] hitColliders = Physics.OverlapSphere(currentPlanetCenter, maxPlanetRadius * 4, planetLayerMask);
 
             float maxAllowedRadius = maxPlanetRadius;
             foreach (Collider collider in hitColliders)
@@ -75,7 +89,8 @@ namespace GalconTechDemo.Gameplay
                 if (distanceBetweenPlanets < minRequiredDistance)
                 {
                     spawnPoint.isFree = false;
-                    return null;
+                    spawnPosition = Vector3.zero;
+                    return false;
                 }
 
                 float allowedRadius = (distanceBetweenPlanets - (2 * collidingPlanetRadius)) / 2;
@@ -87,23 +102,13 @@ namespace GalconTechDemo.Gameplay
             }
             spawnPoint.isFree = false;
 
-            float currentPlanetRandomScale = Random.Range(minPlanetScale, maxPlanetScale);
-
-            Planet planet = Instantiate(
-                planetPrefab,
-                currentPlanetCenter,
-                planetPrefab.transform.rotation,
-                null
-            );
-
-            planet.transform.localScale = Vector3.one * currentPlanetRandomScale;
-
-            return planet;
+            spawnPosition = currentPlanetCenter;
+            return true;
         }
 
         private void GenerateSpawnPointsGrid(float maxPlanetRadius)
         {
-            spawnPoints = new List<SpawnPoint>();
+            spawnPoints = new List<GridPoint>();
 
             float planeWidth = playablePlane.localScale.x * PLANE_DEFAULT_SIZE.x;
             float planeHeight = playablePlane.localScale.z * PLANE_DEFAULT_SIZE.z;
@@ -129,7 +134,7 @@ namespace GalconTechDemo.Gameplay
             {
                 while (currentPositionX <= bottomRightPoint.x && tryCount < maxGridTries)
                 {
-                    spawnPoints.Add(new SpawnPoint(currentPositionX, currentPositionY, true));
+                    spawnPoints.Add(new GridPoint(currentPositionX, currentPositionY, true));
                     currentPositionX += gridStep;
                     tryCount++;
                 }

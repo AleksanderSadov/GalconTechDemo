@@ -773,7 +773,7 @@ GameObject:
   - component: {fileID: 1620302489}
   - component: {fileID: 1620302490}
   m_Layer: 0
-  m_Name: PlanetsGenerator
+  m_Name: PlanetsManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -806,7 +806,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b58120949e33574da027f26d26c0c36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planetsGeneration: {fileID: 1620302490}
+  planetPrefab: {fileID: -2315370165188199000, guid: 26975e5366a264446836a9ffb157e6fa,
+    type: 3}
+  playablePlane: {fileID: 1285752788}
+  planetsFindSpawnPosition: {fileID: 1620302490}
 --- !u!114 &1620302490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -820,7 +823,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canTryMore: 1
-  playablePlane: {fileID: 1285752788}
-  planetPrefab: {fileID: -2315370165188199000, guid: 26975e5366a264446836a9ffb157e6fa,
-    type: 3}
   gridStep: 0.1
