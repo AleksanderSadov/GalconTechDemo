@@ -8,7 +8,8 @@ namespace GalconTechDemo.Gameplay
             Planet planetPrefab,
             Vector3 spawnPosition,
             float minPlanetScale,
-            float maxPlanetScale
+            float maxPlanetScale,
+            Transform parent
         );
     }
 }

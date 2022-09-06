@@ -4,35 +4,44 @@ namespace GalconTechDemo.Gameplay
 {
     public class PlanetsManager : MonoBehaviour
     {
+        public PlanetsModel planetsModel;
+        public Transform planetsContainer;
         public Planet planetPrefab;
         public Transform playablePlane;
         public PlanetsFindSpawnPosition planetsFindSpawnPosition;
 
-        public void GenerateAllPlanets(
-            int numberOfPlanetsRequired,
-            float minPlanetScale,
-            float maxPlanetScale,
-            int maxTries
-        )
+        private void OnEnable()
+        {
+            EventsManager.AddListener<GameStartedEvent>(OnGameStarted);
+        }
+
+        private void OnDisable()
+        {
+            EventsManager.RemoveListener<GameStartedEvent>(OnGameStarted);
+        }
+
+        private void OnGameStarted(GameStartedEvent evt) => GenerateAllPlanets(evt.gameConfig);
+
+        public void GenerateAllPlanets(GameConfig gameConfig)
         {
             planetsFindSpawnPosition.Init(
                 planetPrefab.GetRadius(),
-                minPlanetScale,
-                maxPlanetScale,
+                gameConfig.planetsMinScale,
+                gameConfig.planetsMaxScale,
                 1 << planetPrefab.gameObject.layer,
                 playablePlane
             );
 
-            PlanetSpawner planetSpawner = new PlanetSpawner();
+            ISpawnPlanet planetSpawner = new PlanetSpawner();
 
             int generatedPlanetsTriedCount = 0;
             int generatedPlanetsSuccessCount = 0;
-            while (generatedPlanetsTriedCount < numberOfPlanetsRequired && planetsFindSpawnPosition.canTryMore)
+            while (generatedPlanetsTriedCount < gameConfig.planetsOnMap && planetsFindSpawnPosition.canTryMore)
             {
                 int triesCount = 0;
                 bool isSpawnFound = false;
                 Vector3 spawnPosition = Vector3.zero;
-                while (!isSpawnFound && planetsFindSpawnPosition.canTryMore && triesCount < maxTries)
+                while (!isSpawnFound && planetsFindSpawnPosition.canTryMore && triesCount < gameConfig.planetsMaxGenerationTries)
                 {
                     isSpawnFound = planetsFindSpawnPosition.GetNextPlanetSpawnPosition(out spawnPosition);
                     triesCount++;
@@ -40,12 +49,14 @@ namespace GalconTechDemo.Gameplay
 
                 if (isSpawnFound)
                 {
-                    planetSpawner.SpawnPlanet(
+                    Planet planet = planetSpawner.SpawnPlanet(
                         planetPrefab,
                         spawnPosition,
-                        minPlanetScale,
-                        maxPlanetScale
+                        gameConfig.planetsMinScale,
+                        gameConfig.planetsMaxScale,
+                        planetsContainer
                     );
+                    planetsModel.planets.Add(planet);
 
                     generatedPlanetsSuccessCount++;
                 }
@@ -53,17 +64,19 @@ namespace GalconTechDemo.Gameplay
                 generatedPlanetsTriedCount++;
             }
 
-            if (generatedPlanetsSuccessCount < numberOfPlanetsRequired)
+            if (generatedPlanetsSuccessCount < gameConfig.planetsOnMap)
             {
                 Debug.Log(
                     "Cannot fit all planets on map with current generation method\n" +
                     "Number of generated planets: " + generatedPlanetsSuccessCount + "\n" +
-                    "Number of required planets: " + numberOfPlanetsRequired + "\n" +
-                    "Max tries: " + maxTries
+                    "Number of required planets: " + gameConfig.planetsOnMap + "\n" +
+                    "Max tries: " + gameConfig.planetsMaxGenerationTries
                 );
             }
 
             planetsFindSpawnPosition.Free();
+
+            EventsManager.Broadcast(Events.PlanetsGeneratedEvent);
         }
     }
 }

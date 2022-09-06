@@ -6,14 +6,17 @@ namespace GalconTechDemo.Gameplay
     public class GameConfig : ScriptableObject
     {
         [Header("Planets")]
-        public int totalNumberOfPlanetsOnMap = 1;
-        public float planetMinScale = 1.5f;
-        public float planetMaxScale = 2.5f;
+        public int planetsOnMap = 1;
+        public float planetsMinScale = 1.5f;
+        public float planetsMaxScale = 2.5f;
 
-        [Header("Optimization")]
+        [Header("Planets Optimization")]
         [Tooltip("Maximum tries for generating single planet on random map position without intersecting with other planets." +
             " If max tries is exceeded we skip iteration and generate less planets than expected")]
-        public int maxPlanetGenerationTries = 50;
+        public int planetsMaxGenerationTries = 50;
+
+        [Header("Player")]
+        public int playerShipsOnStart = 50;
     }
 }
 
