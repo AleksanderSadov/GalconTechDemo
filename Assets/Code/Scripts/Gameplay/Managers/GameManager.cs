@@ -29,10 +29,10 @@ namespace GalconTechDemo.Gameplay
 
         private void AssignPlayerToRandomPlanet()
         {
-            Planet randomPlanet = planetsModel.GetRandomPlanet();
+            Planet playerPlanet = planetsModel.GetRandomPlanet();
             TeamMember player = teamsModel.player;
-            randomPlanet.controlledBy = player;
-            randomPlanet.currentShipsCount = gameConfig.playerShipsOnStart;
+            playerPlanet.AssignTo(player);
+            playerPlanet.currentShipsCount = player.shipsOnStart;
         }
     } 
 }

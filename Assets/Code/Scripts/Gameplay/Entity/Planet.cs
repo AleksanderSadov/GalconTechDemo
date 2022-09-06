@@ -31,6 +31,17 @@ namespace GalconTechDemo.Gameplay
             return GetComponent<SphereCollider>().radius * transform.localScale.x;
         }
 
+        public void AssignTo(TeamMember teamMember)
+        {
+            controlledBy = teamMember;
+            ChangeMaterial(teamMember.controlledPlanetMaterial);
+        }
+
+        public void ChangeMaterial(Material material)
+        {
+            GetComponent<MeshRenderer>().material = material;
+        }
+
         private void GenerateShips()
         {
             if (controlledBy != null)

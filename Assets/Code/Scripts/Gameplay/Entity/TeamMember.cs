@@ -11,6 +11,8 @@ namespace GalconTechDemo.Gameplay
     public class TeamMember : MonoBehaviour
     {
         public TeamAffiliation teamAffiliation;
+        public int shipsOnStart;
+        public Material controlledPlanetMaterial;
     }
 }
 

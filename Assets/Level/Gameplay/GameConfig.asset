@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5abfe0f28953f46ad37f0c9f234732, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: 
-  totalNumberOfPlanetsOnMap: 20
-  planetMinScale: 1.5
-  planetMaxScale: 2.5
-  maxPlanetGenerationTries: 100000
+  planetsOnMap: 20
+  planetsMinScale: 1.5
+  planetsMaxScale: 2.5
+  planetsMaxGenerationTries: 50
+  playerShipsOnStart: 50
+  playerControlledPlanetMaterial: {fileID: 2100000, guid: 0b9bae4be62b2b04dbbb985f5bffa177,
+    type: 2}

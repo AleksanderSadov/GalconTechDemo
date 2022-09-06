@@ -14,9 +14,6 @@ namespace GalconTechDemo.Gameplay
         [Tooltip("Maximum tries for generating single planet on random map position without intersecting with other planets." +
             " If max tries is exceeded we skip iteration and generate less planets than expected")]
         public int planetsMaxGenerationTries = 50;
-
-        [Header("Player")]
-        public int playerShipsOnStart = 50;
     }
 }
 
