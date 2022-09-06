@@ -6,6 +6,9 @@ namespace GalconTechDemo.Gameplay
     {
         protected readonly Vector3 PLANE_DEFAULT_SIZE = new Vector3(10f, 0f, 10f);
 
+        [HideInInspector]
+        public bool canTryMore = true;
+
         [SerializeField]
         protected Transform playablePlane;
         [SerializeField]

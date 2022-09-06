@@ -41,6 +41,7 @@ namespace GalconTechDemo.Gameplay
             }
             else
             {
+                canTryMore = false;
                 return null;
             }
         }
