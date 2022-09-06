@@ -806,6 +806,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b58120949e33574da027f26d26c0c36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  planetsGeneration: {fileID: 1620302490}
 --- !u!114 &1620302490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -818,7 +819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3032ea79bf1fa4b439f0b74e97a36bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPointStep: 0.1
   playablePlane: {fileID: 1285752788}
   planetPrefab: {fileID: -2315370165188199000, guid: 26975e5366a264446836a9ffb157e6fa,
     type: 3}
+  gridStep: 0.1

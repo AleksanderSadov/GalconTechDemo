@@ -1,17 +1,10 @@
-using System.Collections;
 using UnityEngine;
 
 namespace GalconTechDemo.Gameplay
 {
     public class PlanetsGenerator : MonoBehaviour
     {
-        [SerializeField]
-        private PlanetsGenerationMethod planetsGeneration;
-
-        private void Awake()
-        {
-            planetsGeneration = GetComponent<PlanetsGenerationMethod>();
-        }
+        public PlanetsGenerationMethod planetsGeneration;
 
         public void GenerateAllPlanets(
             int numberOfPlanets,
@@ -36,6 +29,8 @@ namespace GalconTechDemo.Gameplay
 
                 generatedPlanetsTriedCount++;
             }
+
+            planetsGeneration.Free();
         }
     }
 }
