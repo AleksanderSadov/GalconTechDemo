@@ -11,11 +11,12 @@ namespace GalconTechDemo.Gameplay
         
         private void Start()
         {
-            StartCoroutine(planetsGenerator.GenerateAllPlanets(
+            planetsGenerator.GenerateAllPlanets(
                 gameConfig.totalNumberOfPlanetsOnMap,
                 gameConfig.planetMinRadius,
-                gameConfig.planetMaxRadius
-            ));
+                gameConfig.planetMaxRadius,
+                gameConfig.maxPlanetGenerationTries
+            );
         }
     } 
 }

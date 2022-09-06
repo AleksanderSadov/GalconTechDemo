@@ -9,6 +9,11 @@ namespace GalconTechDemo.Gameplay
         public int totalNumberOfPlanetsOnMap = 1;
         public float planetMinRadius = 1.5f;
         public float planetMaxRadius = 2.5f;
+
+        [Header("Optimization")]
+        [Tooltip("Maximum tries for generating single planet on random map position without intersecting with other planets." +
+            " If max tries is exceeded we skip iteration and generate less planets than expected")]
+        public int maxPlanetGenerationTries = 50;
     }
 }
 

@@ -1,10 +1,8 @@
-using UnityEngine;
-
 namespace GalconTechDemo.Gameplay
 {
     public interface IPlanetsGeneration
     {
-        public Planet GenerateNextPlanet(Planet previousPlanet, float minPlanetRadius, float maxPlanetRadius);
+        public Planet GenerateNextPlanet(float minPlanetRadius, float maxPlanetRadius);
     }
 }
 

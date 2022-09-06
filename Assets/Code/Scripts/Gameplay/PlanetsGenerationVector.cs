@@ -4,38 +4,75 @@ namespace GalconTechDemo.Gameplay
 {
     public class PlanetsGenerationVector : MonoBehaviour, IPlanetsGeneration
     {
+        readonly Vector3 PLANE_DEFAULT_SIZE = new Vector3(10f, 0f, 10f);
+
         [SerializeField]
         private Transform playablePlane;
         [SerializeField]
         private Planet planetPrefab;
         
-        public Planet GenerateNextPlanet(Planet previousPlanet, float minPlanetRadius, float maxPlanetRadius)
+        public Planet GenerateNextPlanet(float minPlanetRadius, float maxPlanetRadius)
         {
-            Vector3 startingPoint = previousPlanet != null
-                ? previousPlanet.transform.position
-                : playablePlane.transform.position;
+            Vector3 startingPoint = playablePlane.position;
 
-            float previousPlanetRadius = previousPlanet != null ? previousPlanet.GetRadius() : 0f;
-            float currentPlanetRadius = Random.Range(minPlanetRadius, maxPlanetRadius);
-            float randomEulerAngle = Random.Range(0f, 360f);
-            float minDistanceBetweenPlanets = (previousPlanetRadius + currentPlanetRadius) * 2;
-
-            Vector3 randomVector = GetRandomVector(randomEulerAngle, minDistanceBetweenPlanets);
+            float planetRadius = Random.Range(minPlanetRadius, maxPlanetRadius);
+            Vector3 randomVector = GetRandomVector(
+                playablePlane.localScale.x * PLANE_DEFAULT_SIZE.x / 2,
+                playablePlane.localScale.z * PLANE_DEFAULT_SIZE.z / 2
+            );
             Vector3 spawnPoint = startingPoint + randomVector;
 
-            return Instantiate(
-                planetPrefab, 
+            if (IsIntersectingWithAnotherPlanet(spawnPoint, planetRadius))
+            {
+                return null;
+            }
+
+            Planet planet = Instantiate(
+                planetPrefab,
                 spawnPoint,
                 planetPrefab.transform.rotation,
                 null
             );
+
+            planet.transform.localScale = Vector3.one * planetRadius;
+
+            return planet;
+        }
+
+        public bool IsIntersectingWithAnotherPlanet(Vector3 currentPlanetCenter, float currentPlanetRadius)
+        {
+            Collider[] hitColliders = Physics.OverlapSphere(currentPlanetCenter, currentPlanetRadius, 1 << planetPrefab.gameObject.layer);
+
+            foreach (Collider collider in hitColliders)
+            {
+                Planet collidingPlanet = collider.GetComponent<Planet>();
+
+                if (collidingPlanet == null)
+                {
+                    continue;
+                }
+
+                float collidingPlanetRadius = collidingPlanet.GetRadius();
+                float minRequiredDistance = (currentPlanetRadius + collidingPlanetRadius) * 2;
+                float distanceBetweenPlanets = Vector3.Distance(currentPlanetCenter, collidingPlanet.transform.position);
+
+                if (distanceBetweenPlanets < minRequiredDistance)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
         
-        private Vector3 GetRandomVector(float angle, float magnitude)
+        private Vector3 GetRandomVector(float maxWidth, float maxHeight)
         {
-            Quaternion rotation  = Quaternion.AngleAxis(angle, Vector3.forward);
-            Vector3 XYZdirection = rotation * new Vector3(magnitude,0.0f,0.0f);
-            return XYZdirection;
+            float randomWidth = Random.Range(-maxWidth, maxWidth);
+            float randomHeight = Random.Range(-maxHeight, maxHeight);
+
+            Vector3 randomVector = new Vector3(randomWidth, randomHeight, 0.0f);
+
+            return randomVector;
         }
     }
 }

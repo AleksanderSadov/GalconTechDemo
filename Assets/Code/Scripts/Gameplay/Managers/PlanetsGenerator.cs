@@ -13,22 +13,26 @@ namespace GalconTechDemo.Gameplay
             planetsGeneration = GetComponent<IPlanetsGeneration>();
         }
 
-        public IEnumerator GenerateAllPlanets(
+        public void GenerateAllPlanets(
             int numberOfPlanets,
             float minPlanetRadius,
-            float maxPlanetRadius
+            float maxPlanetRadius,
+            int maxTries
         )
         {
-            int generatedPlanetsCount = 0;
-            while (generatedPlanetsCount < numberOfPlanets)
+            int generatPlanetsTriedCount = 0;
+            while (generatPlanetsTriedCount < numberOfPlanets)
             {
-                planetsGeneration.GenerateNextPlanet(
-                    null,
-                    minPlanetRadius,
-                    maxPlanetRadius
-                );
-                generatedPlanetsCount++;
-                yield return null;
+                int triesCount = 0;
+                Planet lastGeneratedPlanet = null;
+
+                while (lastGeneratedPlanet == null && triesCount < maxTries)
+                {
+                    lastGeneratedPlanet = planetsGeneration.GenerateNextPlanet(minPlanetRadius, maxPlanetRadius);
+                    triesCount++;
+                }
+
+                generatPlanetsTriedCount++;
             }
         }
     }
