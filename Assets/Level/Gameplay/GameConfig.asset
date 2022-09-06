@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5abfe0f28953f46ad37f0c9f234732, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: 
-  totalNumberOfPlanetsOnMap: 2
+  totalNumberOfPlanetsOnMap: 10
   planetMinRadius: 1.5
   planetMaxRadius: 2.5
+  maxPlanetGenerationTries: 100

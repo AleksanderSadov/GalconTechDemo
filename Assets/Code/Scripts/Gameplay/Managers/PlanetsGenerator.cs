@@ -8,7 +8,7 @@ namespace GalconTechDemo.Gameplay
         [SerializeField]
         private IPlanetsGeneration planetsGeneration;
 
-        private void Start()
+        private void Awake()
         {
             planetsGeneration = GetComponent<IPlanetsGeneration>();
         }
