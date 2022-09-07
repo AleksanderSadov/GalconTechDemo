@@ -13,6 +13,7 @@ namespace GalconTechDemo.Gameplay
         public TeamAffiliation teamAffiliation;
         public int shipsOnStart;
         public Material controlledPlanetMaterial;
+        public Material controlledShipMaterial;
     }
 }
 

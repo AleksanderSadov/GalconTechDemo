@@ -1153,6 +1153,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb28475a38580a4e80811a4998a1ce7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shipsContainer: {fileID: 209726107}
+  shipPrefab: {fileID: -2687351700359179920, guid: ad188e318fcfcc24195fcc7e17910b37,
+    type: 3}
 --- !u!1 &1941859411
 GameObject:
   m_ObjectHideFlags: 0
@@ -1200,6 +1203,7 @@ MonoBehaviour:
   teamAffiliation: 1
   shipsOnStart: 0
   controlledPlanetMaterial: {fileID: 0}
+  controlledShipMaterial: {fileID: 0}
 --- !u!1 &2010426812
 GameObject:
   m_ObjectHideFlags: 0

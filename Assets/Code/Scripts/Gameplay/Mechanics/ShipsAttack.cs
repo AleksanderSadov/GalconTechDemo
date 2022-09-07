@@ -4,6 +4,9 @@ namespace GalconTechDemo.Gameplay
 {
     public class ShipsAttack : MonoBehaviour
     {
+        public Transform shipsContainer;
+        public Ship shipPrefab;
+
         private GameConfig gameConfig;
 
         private void Awake()
@@ -27,7 +30,16 @@ namespace GalconTechDemo.Gameplay
         {
             int attackingShipsCount = (int) Mathf.Floor(attackerPlanet.currentShipsCount * gameConfig.shipsAttackPercentage);
             attackerPlanet.currentShipsCount -= attackingShipsCount;
-            DefendPlanet(defenderPlanet, attackingShipsCount, attackerPlanet.controlledBy);
+
+            ISpawnShips shipsSpawner = new ShipsSpawner();
+            for (int i = 0; i < attackingShipsCount; i++)
+            {
+                Ship ship = shipsSpawner.SpawnShip(shipPrefab, attackerPlanet.transform.position, shipsContainer);
+                ship.AssignTo(attackerPlanet.controlledBy);
+                ship.MoveTo(defenderPlanet.transform.position);
+            }
+
+            //DefendPlanet(defenderPlanet, attackingShipsCount, attackerPlanet.controlledBy);
         }
 
         private void DefendPlanet(Planet defenderPlanet, int attackingShipsCount, TeamMember attacker)

@@ -48,3 +48,5 @@ MonoBehaviour:
   shipsOnStart: 50
   controlledPlanetMaterial: {fileID: 2100000, guid: 0b9bae4be62b2b04dbbb985f5bffa177,
     type: 2}
+  controlledShipMaterial: {fileID: 2100000, guid: a07afde9f251cf34aaf8e7c6bd154a33,
+    type: 2}
