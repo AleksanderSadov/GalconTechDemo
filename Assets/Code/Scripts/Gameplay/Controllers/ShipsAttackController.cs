@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace GalconTechDemo.Gameplay
 {
-    public class ShipsManager : MonoBehaviour
+    public class ShipsAttackController : MonoBehaviour
     {
         private GameConfig gameConfig;
 

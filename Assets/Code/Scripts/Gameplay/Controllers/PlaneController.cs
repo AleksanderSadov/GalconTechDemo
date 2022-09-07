@@ -2,8 +2,15 @@ using UnityEngine;
 
 namespace GalconTechDemo.Gameplay
 {
-    public class Plane : MonoBehaviour
+    public class PlaneController : MonoBehaviour
     {
+        private Plane plane;
+
+        private void Awake()
+        {
+            plane = GetComponent<Plane>();
+        }
+
         private void OnMouseDown()
         {
             PlaneClickedEvent planeClicked = Events.PlaneClicked;

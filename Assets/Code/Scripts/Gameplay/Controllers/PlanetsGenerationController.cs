@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace GalconTechDemo.Gameplay
 {
-    public class PlanetsGenerationManager : MonoBehaviour
+    public class PlanetsGenerationController : MonoBehaviour
     {
         public Transform planetsContainer;
         public Planet planetPrefab;

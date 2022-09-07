@@ -16,6 +16,4 @@ MonoBehaviour:
   planetsMinScale: 1.5
   planetsMaxScale: 2.5
   planetsMaxGenerationTries: 50
-  playerShipsOnStart: 50
-  playerControlledPlanetMaterial: {fileID: 2100000, guid: 0b9bae4be62b2b04dbbb985f5bffa177,
-    type: 2}
+  shipsAttackPercentage: 0.5

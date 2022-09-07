@@ -283,6 +283,7 @@ GameObject:
   - component: {fileID: 8685905149742266848}
   - component: {fileID: 9067047388359471368}
   - component: {fileID: -2315370165188199000}
+  - component: {fileID: 765324739929240088}
   m_Layer: 6
   m_Name: BasePlanet
   m_TagString: Untagged
@@ -384,6 +385,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 448d94bd1be2b8942a64d540d2eb0dda, type: 2}
   controlledBy: {fileID: 0}
+--- !u!114 &765324739929240088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5450033007337992910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a495708289a9094fa8bf930a0ea7d08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7414689107685127692
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,16 +21,6 @@ namespace GalconTechDemo.Gameplay
         }
         private float _currentShipsCount = 0f;
 
-        private void Awake()
-        {
-            SetRandomShipsOnStart();
-        }
-
-        private void Update()
-        {
-            GenerateShips();
-        }
-
         public float GetRadius()
         {
             return GetComponent<SphereCollider>().radius * transform.localScale.x;
@@ -47,7 +37,7 @@ namespace GalconTechDemo.Gameplay
             GetComponent<MeshRenderer>().material = material;
         }
 
-        private void GenerateShips()
+        public void GenerateShips()
         {
             if (controlledBy != null)
             {
@@ -55,16 +45,9 @@ namespace GalconTechDemo.Gameplay
             }
         }
 
-        private void SetRandomShipsOnStart()
+        public void SetRandomShipsOnStart()
         {
             _currentShipsCount = Random.Range(config.minShipsOnStart, config.maxShipsOnStart + 1);
-        }
-
-        private void OnMouseDown()
-        {
-            PlanetClickedEvent planetSelectedEvent = Events.PlanetSelectedEvent;
-            planetSelectedEvent.planet = this;
-            EventsManager.Broadcast(planetSelectedEvent);
         }
     }
 }
