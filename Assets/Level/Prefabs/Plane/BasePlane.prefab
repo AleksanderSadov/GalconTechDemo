@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 6368866885425221756}
   - component: {fileID: 6368866885425221747}
   - component: {fileID: 6368866885425221759}
-  - component: {fileID: 4402664088179219893}
   m_Layer: 0
   m_Name: BasePlane
   m_TagString: Untagged
@@ -110,17 +109,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6705ae2f856db4a418ec9738ae9bf6a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4402664088179219893
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6368866885425221746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75daeb70b5f12164ebb21fba147a4a4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

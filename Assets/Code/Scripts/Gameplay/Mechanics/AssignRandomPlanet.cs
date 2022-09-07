@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace GalconTechDemo.Gameplay
 {
-    public class AssignRandomPlanetController : MonoBehaviour
+    public class AssignRandomPlanet : MonoBehaviour
     {
         private PlanetsModel planetsModel;
         private TeamsModel teamsModel;

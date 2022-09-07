@@ -283,7 +283,7 @@ GameObject:
   - component: {fileID: 337233444}
   - component: {fileID: 337233445}
   m_Layer: 0
-  m_Name: PlanetSelectionController
+  m_Name: PlanetSelection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -569,7 +569,7 @@ GameObject:
   m_Component:
   - component: {fileID: 553450276}
   m_Layer: 0
-  m_Name: Controllers
+  m_Name: Mechanics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -638,7 +638,7 @@ GameObject:
   - component: {fileID: 1020276913}
   - component: {fileID: 1020276914}
   m_Layer: 0
-  m_Name: AssignRandomPlanetController
+  m_Name: AssignRandomPlanet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -738,7 +738,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1603123591216061318, guid: fe4a39b60864e724fb4791d6a4c7887c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fe4a39b60864e724fb4791d6a4c7887c, type: 3}
 --- !u!4 &1047896723 stripped
 Transform:
@@ -836,7 +837,7 @@ GameObject:
   - component: {fileID: 1482016259}
   - component: {fileID: 1482016258}
   m_Layer: 0
-  m_Name: PlanetsGenerationController
+  m_Name: PlanetsGeneration
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1119,7 +1120,7 @@ GameObject:
   - component: {fileID: 1936951189}
   - component: {fileID: 1936951190}
   m_Layer: 0
-  m_Name: ShipsAttackController
+  m_Name: ShipsAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

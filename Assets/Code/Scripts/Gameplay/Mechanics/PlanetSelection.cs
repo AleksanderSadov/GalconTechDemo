@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace GalconTechDemo.Gameplay
 {
-    public class PlanetSelectionController : MonoBehaviour
+    public class PlanetSelection : MonoBehaviour
     {
         private Planet lastSelectedPlanet;
 
