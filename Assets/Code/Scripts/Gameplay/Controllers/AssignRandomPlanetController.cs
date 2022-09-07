@@ -27,7 +27,6 @@ namespace GalconTechDemo.Gameplay
 
         private void AssignPlayerToRandomPlanet()
         {
-            Debug.Log("assignPlayerToRandomPlanet");
             Planet playerPlanet = planetsModel.GetRandomPlanet();
             TeamMember player = teamsModel.player;
             playerPlanet.AssignTo(player);
