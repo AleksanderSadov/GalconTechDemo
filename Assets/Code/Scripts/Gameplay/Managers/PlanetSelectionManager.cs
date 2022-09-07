@@ -9,18 +9,18 @@ namespace GalconTechDemo.Gameplay
 
         private void OnEnable()
         {
-            EventsManager.AddListener<PlanetSelectedEvent>(OnPlanetSelected);
-            EventsManager.AddListener<PlaneClicked>(OnPlaneClicked);
+            EventsManager.AddListener<PlanetClickedEvent>(OnPlanetSelected);
+            EventsManager.AddListener<PlaneClickedEvent>(OnPlaneClicked);
         }
 
         private void OnDisable()
         {
-            EventsManager.RemoveListener<PlanetSelectedEvent>(OnPlanetSelected);
-            EventsManager.RemoveListener<PlaneClicked>(OnPlaneClicked);
+            EventsManager.RemoveListener<PlanetClickedEvent>(OnPlanetSelected);
+            EventsManager.RemoveListener<PlaneClickedEvent>(OnPlaneClicked);
         }
 
-        private void OnPlanetSelected(PlanetSelectedEvent evt) => SelectPlanet(evt.planet);
-        private void OnPlaneClicked(PlaneClicked evt) => DeselectPlanets();
+        private void OnPlanetSelected(PlanetClickedEvent evt) => SelectPlanet(evt.planet);
+        private void OnPlaneClicked(PlaneClickedEvent evt) => DeselectPlanets();
 
         private void SelectPlanet(Planet planet)
         {

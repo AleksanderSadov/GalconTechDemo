@@ -6,7 +6,7 @@ namespace GalconTechDemo.Gameplay
     {
         private void OnMouseDown()
         {
-            PlaneClicked planeClicked = Events.PlaneClicked;
+            PlaneClickedEvent planeClicked = Events.PlaneClicked;
             EventsManager.Broadcast(planeClicked);
         }
     }
