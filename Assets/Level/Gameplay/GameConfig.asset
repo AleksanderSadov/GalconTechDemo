@@ -18,3 +18,4 @@ MonoBehaviour:
   planetsMaxGenerationTries: 100000
   shipsOnFirstPlanet: 50
   shipsAttackPercentage: 0.5
+  enemyDecisionsCooldown: 5
