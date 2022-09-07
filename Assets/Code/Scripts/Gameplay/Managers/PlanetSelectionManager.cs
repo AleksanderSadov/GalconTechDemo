@@ -4,38 +4,62 @@ namespace GalconTechDemo.Gameplay
 {
     public class PlanetSelectionManager : MonoBehaviour
     {
-        private Planet selectedPlanet;
+        private Planet lastSelectedPlanet;
 
         private void OnEnable()
         {
-            EventsManager.AddListener<PlanetClickedEvent>(OnPlanetSelected);
+            EventsManager.AddListener<PlanetClickedEvent>(OnPlanetClicked);
             EventsManager.AddListener<PlaneClickedEvent>(OnPlaneClicked);
         }
 
         private void OnDisable()
         {
-            EventsManager.RemoveListener<PlanetClickedEvent>(OnPlanetSelected);
+            EventsManager.RemoveListener<PlanetClickedEvent>(OnPlanetClicked);
             EventsManager.RemoveListener<PlaneClickedEvent>(OnPlaneClicked);
         }
 
-        private void OnPlanetSelected(PlanetClickedEvent evt) => SelectPlanet(evt.planet);
+        private void OnPlanetClicked(PlanetClickedEvent evt)
+        {
+            if (evt.planet.controlledBy?.teamAffiliation == TeamAffiliation.Player)
+            {
+                SelectPlanet(evt.planet);
+            }
+
+            if (lastSelectedPlanet != null && lastSelectedPlanet != evt.planet)
+            {
+                AttackPlanet(evt.planet);
+            }
+        }
         private void OnPlaneClicked(PlaneClickedEvent evt) => DeselectPlanet();
 
         private void SelectPlanet(Planet planet)
         {
-            if (planet.controlledBy?.teamAffiliation != TeamAffiliation.Player)
+            if (lastSelectedPlanet != null)
             {
-                return;
+                DeselectPlanet();
             }
 
-            selectedPlanet = planet;
+            lastSelectedPlanet = planet;
             AddHighlight(planet);
         }
 
         private void DeselectPlanet()
         {
-            RemoveHighlight(selectedPlanet);
-            selectedPlanet = null;
+            if (lastSelectedPlanet != null)
+            {
+                RemoveHighlight(lastSelectedPlanet);
+                lastSelectedPlanet = null;
+            }
+        }
+
+        private void AttackPlanet(Planet defenderPlanet)
+        {
+            AttackPlanetEvent attackPlanetEvent = Events.AttackPlanetEvent;
+            attackPlanetEvent.attackerPlanet = lastSelectedPlanet;
+            attackPlanetEvent.defenderPlanet = defenderPlanet;
+            EventsManager.Broadcast(attackPlanetEvent);
+
+            DeselectPlanet();
         }
 
         private void AddHighlight(Planet planet)

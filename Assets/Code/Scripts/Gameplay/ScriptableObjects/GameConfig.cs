@@ -14,6 +14,11 @@ namespace GalconTechDemo.Gameplay
         [Tooltip("Maximum tries for generating single planet on random map position without intersecting with other planets." +
             " If max tries is exceeded we skip iteration and generate less planets than expected")]
         public int planetsMaxGenerationTries = 50;
+
+        [Header("Ships")]
+        [Tooltip("Percentage of ships deployed from planet when attacking another planet")]
+        [Range(0.0f, 1.0f)]
+        public float shipsAttackPercentage;
     }
 }
 

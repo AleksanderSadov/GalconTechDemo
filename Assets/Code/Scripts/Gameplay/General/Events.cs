@@ -6,6 +6,7 @@ namespace GalconTechDemo.Gameplay
         public static PlanetsGeneratedEvent PlanetsGeneratedEvent = new PlanetsGeneratedEvent();
         public static PlanetClickedEvent PlanetSelectedEvent = new PlanetClickedEvent();
         public static PlaneClickedEvent PlaneClicked = new PlaneClickedEvent();
+        public static AttackPlanetEvent AttackPlanetEvent = new AttackPlanetEvent();
     }
 
     public class GameStartedEvent : GameEvent
@@ -21,4 +22,10 @@ namespace GalconTechDemo.Gameplay
     }
 
     public class PlaneClickedEvent : GameEvent { }
+
+    public class AttackPlanetEvent : GameEvent
+    {
+        public Planet attackerPlanet;
+        public Planet defenderPlanet;
+    }
 }

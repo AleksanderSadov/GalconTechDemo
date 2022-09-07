@@ -4,11 +4,17 @@ namespace GalconTechDemo.Gameplay
 {
     public class PlanetsGenerationManager : MonoBehaviour
     {
-        public PlanetsModel planetsModel;
         public Transform planetsContainer;
         public Planet planetPrefab;
         public Transform playablePlane;
         public PlanetsFindSpawnPosition planetsFindSpawnPosition;
+
+        private PlanetsModel planetsModel;
+
+        private void Awake()
+        {
+            planetsModel = FindObjectOfType<GameManager>().planetsModel;
+        }
 
         private void OnEnable()
         {
