@@ -21,6 +21,10 @@ namespace GalconTechDemo.Gameplay
         [Tooltip("Percentage of ships deployed from planet when attacking another planet")]
         [Range(0.0f, 1.0f)]
         public float shipsAttackPercentage;
+
+        [Header("Enemy")]
+        [Tooltip("Cooldown between enemy decisions and attacks")]
+        public float enemyDecisionsCooldown;
     }
 }
 
