@@ -2,7 +2,8 @@ namespace GalconTechDemo.Gameplay
 {
     public interface IHighlight
     {
-        public void Highlight();
+        public void AddHighlight();
+        public void RemoveHighlight();
     }
 }
 

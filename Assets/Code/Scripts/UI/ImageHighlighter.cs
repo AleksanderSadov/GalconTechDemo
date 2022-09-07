@@ -7,9 +7,14 @@ namespace GalconTechDemo.UI
     {
         public GameObject hightlightImage;
 
-        public void Highlight()
+        public void AddHighlight()
         {
-            hightlightImage.SetActive(true);
+            hightlightImage?.SetActive(true);
+        }
+
+        public void RemoveHighlight()
+        {
+            hightlightImage?.SetActive(false);
         }
     }
 }

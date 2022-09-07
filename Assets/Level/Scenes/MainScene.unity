@@ -529,6 +529,7 @@ GameObject:
   - component: {fileID: 987238041}
   - component: {fileID: 987238040}
   - component: {fileID: 987238039}
+  - component: {fileID: 987238043}
   m_Layer: 0
   m_Name: BackgroundPlane
   m_TagString: Untagged
@@ -615,6 +616,18 @@ Transform:
   m_Father: {fileID: 400287972}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &987238043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987238038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6705ae2f856db4a418ec9738ae9bf6a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1059459755
 GameObject:
   m_ObjectHideFlags: 0
@@ -674,6 +687,7 @@ GameObject:
   - component: {fileID: 1285752791}
   - component: {fileID: 1285752790}
   - component: {fileID: 1285752789}
+  - component: {fileID: 1285752792}
   m_Layer: 0
   m_Name: PlayablePlane
   m_TagString: Untagged
@@ -760,6 +774,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1285752787}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1285752792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285752787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6705ae2f856db4a418ec9738ae9bf6a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1329650094
 GameObject:
   m_ObjectHideFlags: 0
