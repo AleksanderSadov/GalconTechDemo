@@ -24,6 +24,11 @@ namespace GalconTechDemo.Gameplay
 
         private void SelectPlanet(Planet planet)
         {
+            if (planet.controlledBy?.teamAffiliation != TeamAffiliation.Player)
+            {
+                return;
+            }
+
             selectedPlanets.Add(planet);
             AddHighlight(planet);
         }
