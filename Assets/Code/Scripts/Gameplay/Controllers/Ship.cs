@@ -37,7 +37,7 @@ namespace GalconTechDemo.Gameplay
         {
             capturePlanet.targetPlanet = targetPlanet;
             capturePlanet.attacker = ownership.controlledBy;
-            MoveTo(targetPlanet.transform.position);
+            MoveTo(targetPlanet.GetClosestPositionOnSurface(transform.position));
         }
     }
 }

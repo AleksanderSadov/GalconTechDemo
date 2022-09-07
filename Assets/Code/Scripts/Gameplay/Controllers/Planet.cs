@@ -39,6 +39,12 @@ namespace GalconTechDemo.Gameplay
             return GetComponent<SphereCollider>().radius * transform.localScale.x;
         }
 
+        public Vector3 GetClosestPositionOnSurface(Vector3 targetPosition)
+        {
+            Vector3 planetCenter = transform.position;
+            return planetCenter - (planetCenter - targetPosition).normalized * GetRadius();
+        }
+
         public void AssignTo(TeamMember teamMember)
         {
             ownership.AssignTo(teamMember);
