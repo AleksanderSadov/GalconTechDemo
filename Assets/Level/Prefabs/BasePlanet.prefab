@@ -281,13 +281,14 @@ GameObject:
   - component: {fileID: 302324064303124527}
   - component: {fileID: 2588650804147467265}
   - component: {fileID: 8685905149742266848}
+  - component: {fileID: 5074899587289117805}
   - component: {fileID: 9067047388359471368}
   - component: {fileID: -2315370165188199000}
   - component: {fileID: 5090746983306419334}
   - component: {fileID: 5505002795790526782}
   m_Layer: 6
   m_Name: BasePlanet
-  m_TagString: Untagged
+  m_TagString: Planet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -359,6 +360,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &5074899587289117805
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5450033007337992910}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!135 &9067047388359471368
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -367,7 +384,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5450033007337992910}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5

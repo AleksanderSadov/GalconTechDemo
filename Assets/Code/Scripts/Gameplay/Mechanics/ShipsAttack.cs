@@ -36,20 +36,7 @@ namespace GalconTechDemo.Gameplay
             {
                 Ship ship = shipsSpawner.SpawnShip(shipPrefab, attackerPlanet.transform.position, shipsContainer);
                 ship.AssignTo(attackerPlanet.controlledBy);
-                ship.MoveTo(defenderPlanet.transform.position);
-            }
-
-            //DefendPlanet(defenderPlanet, attackingShipsCount, attackerPlanet.controlledBy);
-        }
-
-        private void DefendPlanet(Planet defenderPlanet, int attackingShipsCount, TeamMember attacker)
-        {
-            defenderPlanet.currentShipsCount -= attackingShipsCount;
-
-            if (defenderPlanet.currentShipsCount <= 0)
-            {
-                defenderPlanet.AssignTo(attacker);
-                defenderPlanet.currentShipsCount *= -1;
+                ship.Capture(defenderPlanet);
             }
         }
     }
