@@ -15,5 +15,6 @@ MonoBehaviour:
   planetsOnMap: 20
   planetsMinScale: 1.5
   planetsMaxScale: 2.5
-  planetsMaxGenerationTries: 50
+  planetsMaxGenerationTries: 100000
+  shipsOnFirstPlanet: 50
   shipsAttackPercentage: 0.5

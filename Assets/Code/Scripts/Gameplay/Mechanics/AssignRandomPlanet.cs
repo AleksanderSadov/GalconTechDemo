@@ -4,6 +4,7 @@ namespace GalconTechDemo.Gameplay
 {
     public class AssignRandomPlanet : MonoBehaviour
     {
+        private GameConfig gameConfig;
         private PlanetsModel planetsModel;
         private TeamsModel teamsModel;
 
@@ -14,8 +15,10 @@ namespace GalconTechDemo.Gameplay
 
         private void Awake()
         {
-            planetsModel = FindObjectOfType<GameManager>().planetsModel;
-            teamsModel = FindObjectOfType<GameManager>().teamsModel;
+            GameManager gameManager = FindObjectOfType<GameManager>();
+            gameConfig = gameManager.gameConfig;
+            planetsModel = gameManager.planetsModel;
+            teamsModel = gameManager.teamsModel;
         }
 
         private void OnDisable()
@@ -23,14 +26,19 @@ namespace GalconTechDemo.Gameplay
             EventsManager.RemoveListener<PlanetsGeneratedEvent>(OnPlanetsGenerated);
         }
 
-        private void OnPlanetsGenerated(PlanetsGeneratedEvent evt) => AssignPlayerToRandomPlanet();
-
-        private void AssignPlayerToRandomPlanet()
+        private void OnPlanetsGenerated(PlanetsGeneratedEvent evt)
         {
-            Planet playerPlanet = planetsModel.GetRandomPlanet();
             TeamMember player = teamsModel.player;
-            playerPlanet.AssignTo(player);
-            playerPlanet.currentShipsCount = player.shipsOnStart;
+            TeamMember enemy = teamsModel.enemy;
+            AssignToRandomPlanet(player);
+            AssignToRandomPlanet(enemy);
+        }
+
+        private void AssignToRandomPlanet(TeamMember teamMember)
+        {
+            Planet planet = planetsModel.GetRandomNotControlledPlanet();
+            planet.AssignTo(teamMember);
+            planet.currentShipsCount = gameConfig.shipsOnFirstPlanet;
         }
     }
 }
