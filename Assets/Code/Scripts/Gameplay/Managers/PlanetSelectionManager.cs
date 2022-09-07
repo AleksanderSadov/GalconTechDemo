@@ -1,11 +1,10 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace GalconTechDemo.Gameplay
 {
     public class PlanetSelectionManager : MonoBehaviour
     {
-        private List<Planet> selectedPlanets = new List<Planet>();
+        private Planet selectedPlanet;
 
         private void OnEnable()
         {
@@ -20,7 +19,7 @@ namespace GalconTechDemo.Gameplay
         }
 
         private void OnPlanetSelected(PlanetClickedEvent evt) => SelectPlanet(evt.planet);
-        private void OnPlaneClicked(PlaneClickedEvent evt) => DeselectPlanets();
+        private void OnPlaneClicked(PlaneClickedEvent evt) => DeselectPlanet();
 
         private void SelectPlanet(Planet planet)
         {
@@ -29,18 +28,14 @@ namespace GalconTechDemo.Gameplay
                 return;
             }
 
-            selectedPlanets.Add(planet);
+            selectedPlanet = planet;
             AddHighlight(planet);
         }
 
-        private void DeselectPlanets()
+        private void DeselectPlanet()
         {
-            foreach (Planet planet in selectedPlanets)
-            {
-                RemoveHighlight(planet);
-            }
-
-            selectedPlanets.Clear();
+            RemoveHighlight(selectedPlanet);
+            selectedPlanet = null;
         }
 
         private void AddHighlight(Planet planet)
