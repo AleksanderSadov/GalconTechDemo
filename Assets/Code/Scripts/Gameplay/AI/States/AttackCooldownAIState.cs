@@ -11,6 +11,7 @@ namespace GalconTechDemo.Gameplay
         public override void Init(GameConfig gameConfig, PlanetsModel planetsModel, TeamMember teamMember)
         {
             base.Init(gameConfig, planetsModel, teamMember);
+            stateLabel = BotAIStatesLabel.AttackCooldown;
             cooldownSeconds = gameConfig.enemyDecisionsCooldown;
             timeStarted = Time.time;
         }

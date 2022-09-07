@@ -2,10 +2,18 @@ using UnityEngine;
 
 namespace GalconTechDemo.Gameplay
 {
+    public enum BotAIStatesLabel
+    {
+        AttackCooldown,
+        AttackRandom,
+        SelectAttack
+    }
+
     [RequireComponent(typeof(TeamMember))]
     public class BotAI : MonoBehaviour
     {
         public AIState currentAIState;
+        public BotAIStatesLabel currentAIStateLabel;
 
         private GameConfig gameConfig;
         private PlanetsModel planetsModel;
@@ -23,6 +31,7 @@ namespace GalconTechDemo.Gameplay
         {
             currentAIState = new SelectAttackAIState();
             currentAIState.Init(gameConfig, planetsModel, teamMember);
+            currentAIStateLabel = currentAIState.stateLabel;
         }
 
         private void Update()
@@ -33,6 +42,7 @@ namespace GalconTechDemo.Gameplay
                 currentAIState.Exit();
                 currentAIState = nextAIState;
                 currentAIState.Init(gameConfig, planetsModel, teamMember);
+                currentAIStateLabel = currentAIState.stateLabel;
             }
             currentAIState.UpdateState();
         }

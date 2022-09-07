@@ -3,6 +3,8 @@ namespace GalconTechDemo.Gameplay
     [System.Serializable]
     public abstract class AIState
     {
+        public BotAIStatesLabel stateLabel;
+
         private GameConfig gameConfig;
         private PlanetsModel planetsModel;
         private TeamMember teamMember;

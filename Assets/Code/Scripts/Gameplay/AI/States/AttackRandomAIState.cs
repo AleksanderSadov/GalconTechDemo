@@ -5,6 +5,7 @@ namespace GalconTechDemo.Gameplay
         public override void Init(GameConfig gameConfig, PlanetsModel planetsModel, TeamMember teamMember)
         {
             base.Init(gameConfig, planetsModel, teamMember);
+            stateLabel = BotAIStatesLabel.AttackRandom;
 
             Planet botPlanet = planetsModel.GetRandomControlledPlanet(teamMember);
             Planet planetTarget = planetsModel.GetRandomOpponentPlanet(teamMember);
