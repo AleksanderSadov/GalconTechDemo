@@ -59,6 +59,13 @@ namespace GalconTechDemo.Gameplay
         {
             _currentShipsCount = Random.Range(config.minShipsOnStart, config.maxShipsOnStart + 1);
         }
+
+        private void OnMouseDown()
+        {
+            PlanetSelectedEvent planetSelectedEvent = Events.PlanetSelectedEvent;
+            planetSelectedEvent.planet = this;
+            EventsManager.Broadcast(planetSelectedEvent);
+        }
     }
 }
 
