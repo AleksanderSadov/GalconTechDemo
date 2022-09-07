@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BackgroundPlane
       objectReference: {fileID: 0}
+    - target: {fileID: 6368866885425221746, guid: d86df1bb07027544d88e8c0c880059fb,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6368866885425221756, guid: d86df1bb07027544d88e8c0c880059fb,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

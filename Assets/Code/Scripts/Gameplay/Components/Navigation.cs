@@ -1,31 +1,21 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace GalconTechDemo.Gameplay
 {
+    [RequireComponent(typeof(NavMeshAgent))]
     public class Navigation : MonoBehaviour
     {
-        private Vector3 destination;
-        private bool hasReachedDestination = true;
-        private float speed = 10f;
+        private NavMeshAgent navAgent;
 
-        private void Update()
+        private void Awake()
         {
-            if (!hasReachedDestination)
-            {
-                float step = speed * Time.deltaTime;
-                transform.position = Vector3.MoveTowards(transform.position, destination, step);
-            }
-
-            if (Vector3.Distance(transform.position, destination) <= 0.1f)
-            {
-                hasReachedDestination = true;
-            }
+            navAgent = GetComponent<NavMeshAgent>();
         }
 
         public void MoveTo(Vector3 destination)
         {
-            this.destination = destination;
-            hasReachedDestination = false;
+            navAgent.SetDestination(destination);
         }
     }
 }
