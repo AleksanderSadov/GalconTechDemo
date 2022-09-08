@@ -6,7 +6,8 @@ namespace GalconTechDemo.Gameplay
     {
         AttackCooldown,
         AttackRandom,
-        SelectAttack
+        SelectAttack,
+        AttackPlayer,
     }
 
     [RequireComponent(typeof(TeamMember))]
@@ -14,6 +15,7 @@ namespace GalconTechDemo.Gameplay
     {
         public AIState currentAIState;
         public BotAIStatesLabel currentAIStateLabel;
+        public BotAIStatesLabel previousAIStateLabel;
 
         private GameConfig gameConfig;
         private PlanetsModel planetsModel;
@@ -39,9 +41,12 @@ namespace GalconTechDemo.Gameplay
             AIState nextAIState = currentAIState.UpdateStateTransitions();
             if (nextAIState != null && nextAIState != currentAIState)
             {
+                previousAIStateLabel = currentAIStateLabel;
+
                 currentAIState.Exit();
                 currentAIState = nextAIState;
                 currentAIState.Init(gameConfig, planetsModel, teamMember);
+
                 currentAIStateLabel = currentAIState.stateLabel;
             }
             currentAIState.UpdateState();

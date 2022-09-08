@@ -1,14 +1,19 @@
 namespace GalconTechDemo.Gameplay
 {
-    public class AttackRandomAIState : AIState
+    public class AttackPlayerAIState : AIState
     {
         public override void Init(GameConfig gameConfig, PlanetsModel planetsModel, TeamMember botMember)
         {
             base.Init(gameConfig, planetsModel, botMember);
-            stateLabel = BotAIStatesLabel.AttackRandom;
+            stateLabel = BotAIStatesLabel.AttackPlayer;
 
             Planet botPlanet = planetsModel.GetRandomControlledPlanet(botMember);
-            Planet planetTarget = planetsModel.GetRandomOpponentOrFreePlanet(botMember);
+            Planet planetTarget = planetsModel.GetRandomOpponentControlledPlanet(botMember);
+
+            if (planetTarget == null)
+            {
+                planetTarget = planetsModel.GetRandomOpponentOrFreePlanet(botMember);
+            }
 
             AttackHelper.AttackPlanet(botPlanet, planetTarget);
         }

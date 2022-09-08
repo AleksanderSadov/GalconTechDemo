@@ -8,9 +8,9 @@ namespace GalconTechDemo.Gameplay
         private float timeStarted;
         private bool isCooldownExpired = false;
 
-        public override void Init(GameConfig gameConfig, PlanetsModel planetsModel, TeamMember teamMember)
+        public override void Init(GameConfig gameConfig, PlanetsModel planetsModel, TeamMember botMember)
         {
-            base.Init(gameConfig, planetsModel, teamMember);
+            base.Init(gameConfig, planetsModel, botMember);
             stateLabel = BotAIStatesLabel.AttackCooldown;
             cooldownSeconds = gameConfig.enemyDecisionsCooldown;
             timeStarted = Time.time;

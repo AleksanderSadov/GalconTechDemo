@@ -54,14 +54,32 @@ namespace GalconTechDemo.Gameplay
             return controlledPlanets[randomIndex];
         }
 
-        public List<Planet> GetOpponentPlanets(TeamMember teamMember)
+        public List<Planet> GetOpponentControlledPlanets(TeamMember teamMember)
+        {
+            return planets.FindAll(p => p.controlledBy != null && p.controlledBy != teamMember);
+        }
+
+        public Planet GetRandomOpponentControlledPlanet(TeamMember teamMember)
+        {
+            List<Planet> controlledPlanets = GetOpponentControlledPlanets(teamMember);
+
+            if (controlledPlanets.Count == 0)
+            {
+                return null;
+            }
+
+            int randomIndex = Random.Range(0, controlledPlanets.Count);
+            return controlledPlanets[randomIndex];
+        }
+
+        public List<Planet> GetOpponentOrFreePlanets(TeamMember teamMember)
         {
             return planets.FindAll(p => p.controlledBy != teamMember);
         }
 
-        public Planet GetRandomOpponentPlanet(TeamMember teamMember)
+        public Planet GetRandomOpponentOrFreePlanet(TeamMember teamMember)
         {
-            List<Planet> opponentPlanets = GetOpponentPlanets(teamMember);
+            List<Planet> opponentPlanets = GetOpponentOrFreePlanets(teamMember);
 
             if (planets.Count == 0)
             {

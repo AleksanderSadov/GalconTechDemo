@@ -6,9 +6,9 @@ namespace GalconTechDemo.Gameplay
     {
         private AIState nextAIState;
 
-        public override void Init(GameConfig gameConfig, PlanetsModel planetsModel, TeamMember teamMember)
+        public override void Init(GameConfig gameConfig, PlanetsModel planetsModel, TeamMember botMember)
         {
-            base.Init(gameConfig, planetsModel, teamMember);
+            base.Init(gameConfig, planetsModel, botMember);
             stateLabel = BotAIStatesLabel.SelectAttack;
 
             int randomIndex = Random.Range(0, 2);
@@ -16,6 +16,9 @@ namespace GalconTechDemo.Gameplay
             {
                 case 0:
                     nextAIState = new AttackRandomAIState();
+                    break;
+                case 1:
+                    nextAIState = new AttackPlayerAIState();
                     break;
                 default:
                     nextAIState = new AttackRandomAIState();

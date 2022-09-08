@@ -28,6 +28,7 @@ namespace GalconTechDemo.Gameplay
             if (lastSelectedPlanet != null && lastSelectedPlanet != evt.planet)
             {
                 AttackPlanet(evt.planet);
+                DeselectPlanet();
             }
         }
         private void OnPlaneClicked(PlaneClickedEvent evt) => DeselectPlanet();
@@ -54,12 +55,7 @@ namespace GalconTechDemo.Gameplay
 
         private void AttackPlanet(Planet defenderPlanet)
         {
-            AttackPlanetEvent attackPlanetEvent = Events.AttackPlanetEvent;
-            attackPlanetEvent.attackerPlanet = lastSelectedPlanet;
-            attackPlanetEvent.defenderPlanet = defenderPlanet;
-            EventsManager.Broadcast(attackPlanetEvent);
-
-            DeselectPlanet();
+            AttackHelper.AttackPlanet(lastSelectedPlanet, defenderPlanet);
         }
 
         private void AddHighlight(Planet planet)
