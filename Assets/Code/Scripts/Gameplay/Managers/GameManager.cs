@@ -4,14 +4,11 @@ namespace GalconTechDemo.Gameplay
 {
     public class GameManager : MonoBehaviour
     {
-        public GameConfig gameConfig;
-        public PlanetsModel planetsModel;
-        public TeamsModel teamsModel;
-
         private void Start()
         {
+            GameModel gameModel = FindObjectOfType<GameModel>();
             GameStartedEvent onGameStartedEvent = Events.OnGameStartedEvent;
-            onGameStartedEvent.gameConfig = gameConfig;
+            onGameStartedEvent.gameConfig = gameModel.gameConfig;
             EventsManager.Broadcast(onGameStartedEvent);
         }
     }

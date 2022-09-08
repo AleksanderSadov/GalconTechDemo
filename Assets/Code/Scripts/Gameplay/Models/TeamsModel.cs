@@ -1,8 +1,7 @@
-using UnityEngine;
-
 namespace GalconTechDemo.Gameplay
 {
-    public class TeamsModel : MonoBehaviour
+    [System.Serializable]
+    public class TeamsModel
     {
         public TeamMember player;
         public TeamMember enemy;

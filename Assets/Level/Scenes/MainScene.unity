@@ -496,51 +496,6 @@ Transform:
   m_Father: {fileID: 1524784820}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &463600240
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 463600241}
-  - component: {fileID: 463600242}
-  m_Layer: 0
-  m_Name: PlanetsModel
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &463600241
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 463600240}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1560015038}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &463600242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 463600240}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc3664239c4fd21489f5b94a9947e702, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  planets: []
 --- !u!4 &538510120 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8679151986736882299, guid: 3971d9d5d16fdbb4a8eee328dee267fa,
@@ -592,7 +547,7 @@ Transform:
   - {fileID: 337233444}
   - {fileID: 1936951189}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &682259309
 GameObject:
@@ -625,7 +580,7 @@ Transform:
   - {fileID: 330585546}
   - {fileID: 538510120}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1020276912
 GameObject:
@@ -761,6 +716,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1059459756}
   - component: {fileID: 1059459757}
+  - component: {fileID: 1059459758}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -795,9 +751,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbdc7fc182c89ea47adbf232b51c110d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1059459758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059459755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 866b8ecf4b3cf82418aad5e2f9b07831, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   gameConfig: {fileID: 11400000, guid: 7f4bb5d6ed2af7a4ab639ae2bc27a223, type: 2}
-  planetsModel: {fileID: 463600242}
-  teamsModel: {fileID: 1900523430}
+  planetsModel:
+    planets: []
+  teamsModel:
+    player: {fileID: 538510121}
+    enemy: {fileID: 1941859413}
 --- !u!1 &1329650094
 GameObject:
   m_ObjectHideFlags: 0
@@ -925,7 +896,7 @@ Transform:
   - {fileID: 400287972}
   - {fileID: 2010426813}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1541995246
 GameObject:
@@ -958,39 +929,6 @@ Transform:
   - {fileID: 1059459756}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1560015037
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1560015038}
-  m_Layer: 0
-  m_Name: Models
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1560015038
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1560015037}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 463600241}
-  - {fileID: 1900523429}
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1699034572
 PrefabInstance:
@@ -1067,52 +1005,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1699034572}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1900523428
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1900523429}
-  - component: {fileID: 1900523430}
-  m_Layer: 0
-  m_Name: TeamsModel
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1900523429
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1900523428}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1560015038}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1900523430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1900523428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95207025ac20b5a49ac71d926aba8674, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 538510121}
-  enemy: {fileID: 1941859413}
 --- !u!1 &1936951188
 GameObject:
   m_ObjectHideFlags: 0
@@ -1215,7 +1107,7 @@ PrefabInstance:
     - target: {fileID: 1335781773203338347, guid: 24267b951a8be194a93ebba2dea0a204,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1335781773203338347, guid: 24267b951a8be194a93ebba2dea0a204,
         type: 3}

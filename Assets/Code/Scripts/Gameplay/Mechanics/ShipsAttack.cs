@@ -11,7 +11,7 @@ namespace GalconTechDemo.Gameplay
 
         private void Awake()
         {
-            gameConfig = FindObjectOfType<GameManager>().gameConfig;
+            gameConfig = FindObjectOfType<GameModel>().gameConfig;
         }
 
         public void OnEnable()

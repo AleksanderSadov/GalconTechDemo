@@ -5,14 +5,12 @@ namespace GalconTechDemo.Gameplay
     {
         public BotAIStatesLabel stateLabel;
 
-        private GameConfig gameConfig;
-        private PlanetsModel planetsModel;
+        private GameModel gameModel;
         private TeamMember teamMember;
 
-        public virtual void Init(GameConfig gameConfig, PlanetsModel planetsModel, TeamMember teamMember) 
+        public virtual void Init(GameModel gameModel, TeamMember teamMember) 
         {
-            this.gameConfig = gameConfig;
-            this.planetsModel = planetsModel;
+            this.gameModel = gameModel;
             this.teamMember = teamMember;
         }
 

@@ -6,9 +6,9 @@ namespace GalconTechDemo.Gameplay
     {
         private AIState nextAIState;
 
-        public override void Init(GameConfig gameConfig, PlanetsModel planetsModel, TeamMember botMember)
+        public override void Init(GameModel gameModel, TeamMember botMember)
         {
-            base.Init(gameConfig, planetsModel, botMember);
+            base.Init(gameModel, botMember);
             stateLabel = BotAIStatesLabel.SelectAttack;
 
             int randomIndex = Random.Range(0, 3);

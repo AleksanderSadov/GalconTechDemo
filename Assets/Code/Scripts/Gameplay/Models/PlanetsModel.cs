@@ -3,7 +3,8 @@ using UnityEngine;
 
 namespace GalconTechDemo.Gameplay
 {
-    public class PlanetsModel : MonoBehaviour
+    [System.Serializable]
+    public class PlanetsModel
     {
         public List<Planet> planets = new List<Planet>();
 

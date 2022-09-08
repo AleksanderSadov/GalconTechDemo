@@ -13,7 +13,7 @@ namespace GalconTechDemo.Gameplay
 
         private void Awake()
         {
-            planetsModel = FindObjectOfType<GameManager>().planetsModel;
+            planetsModel = FindObjectOfType<GameModel>().planetsModel;
         }
 
         private void OnEnable()
