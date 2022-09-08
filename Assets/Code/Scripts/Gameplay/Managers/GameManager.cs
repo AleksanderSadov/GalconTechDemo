@@ -19,6 +19,7 @@ namespace GalconTechDemo.Gameplay
 
         private void Start()
         {
+            Time.timeScale = 1;
             GameModel gameModel = FindObjectOfType<GameModel>();
             GameStartedEvent onGameStartedEvent = Events.OnGameStartedEvent;
             onGameStartedEvent.gameConfig = gameModel.gameConfig;
@@ -41,6 +42,7 @@ namespace GalconTechDemo.Gameplay
                 GameOverEvent gameOverEvent = Events.GameOverEvent;
                 gameOverEvent.isPlayerWon = member == gameModel.teamsModel.player;
                 EventsManager.Broadcast(gameOverEvent);
+                Time.timeScale = 0;
             }
         }
     }
