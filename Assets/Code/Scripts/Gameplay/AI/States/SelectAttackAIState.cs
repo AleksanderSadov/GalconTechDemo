@@ -11,7 +11,7 @@ namespace GalconTechDemo.Gameplay
             base.Init(gameConfig, planetsModel, botMember);
             stateLabel = BotAIStatesLabel.SelectAttack;
 
-            int randomIndex = Random.Range(0, 2);
+            int randomIndex = Random.Range(0, 3);
             switch (randomIndex)
             {
                 case 0:
@@ -19,6 +19,9 @@ namespace GalconTechDemo.Gameplay
                     break;
                 case 1:
                     nextAIState = new AttackPlayerAIState();
+                    break;
+                case 2:
+                    nextAIState = new AttackCaptureAIState();
                     break;
                 default:
                     nextAIState = new AttackRandomAIState();

@@ -7,6 +7,26 @@ namespace GalconTechDemo.Gameplay
     {
         public List<Planet> planets = new List<Planet>();
 
+        public List<Planet> GetNotControlledPlanets()
+        {
+            return planets.FindAll(p => p.controlledBy == null);
+        }
+
+        public List<Planet> GetControlledPlanets(TeamMember teamMember)
+        {
+            return planets.FindAll(p => p.controlledBy == teamMember);
+        }
+
+        public List<Planet> GetOpponentControlledPlanets(TeamMember teamMember)
+        {
+            return planets.FindAll(p => p.controlledBy != null && p.controlledBy != teamMember);
+        }
+
+        public List<Planet> GetOpponentOrFreePlanets(TeamMember teamMember)
+        {
+            return planets.FindAll(p => p.controlledBy != teamMember);
+        }
+
         public Planet GetRandomPlanet()
         {
             if (planets.Count == 0)
@@ -16,11 +36,6 @@ namespace GalconTechDemo.Gameplay
 
             int randomIndex = Random.Range(0, planets.Count);
             return planets[randomIndex];
-        }
-
-        public List<Planet> GetNotControlledPlanets()
-        {
-            return planets.FindAll(p => p.controlledBy == null);
         }
 
         public Planet GetRandomNotControlledPlanet()
@@ -36,11 +51,6 @@ namespace GalconTechDemo.Gameplay
             return notControlledPlanets[randomIndex];
         }
 
-        public List<Planet> GetControlledPlanets(TeamMember teamMember)
-        {
-            return planets.FindAll(p => p.controlledBy == teamMember);
-        }
-
         public Planet GetRandomControlledPlanet(TeamMember teamMember)
         {
             List<Planet> controlledPlanets = GetControlledPlanets(teamMember);
@@ -52,11 +62,6 @@ namespace GalconTechDemo.Gameplay
 
             int randomIndex = Random.Range(0, controlledPlanets.Count);
             return controlledPlanets[randomIndex];
-        }
-
-        public List<Planet> GetOpponentControlledPlanets(TeamMember teamMember)
-        {
-            return planets.FindAll(p => p.controlledBy != null && p.controlledBy != teamMember);
         }
 
         public Planet GetRandomOpponentControlledPlanet(TeamMember teamMember)
@@ -72,22 +77,49 @@ namespace GalconTechDemo.Gameplay
             return controlledPlanets[randomIndex];
         }
 
-        public List<Planet> GetOpponentOrFreePlanets(TeamMember teamMember)
-        {
-            return planets.FindAll(p => p.controlledBy != teamMember);
-        }
-
         public Planet GetRandomOpponentOrFreePlanet(TeamMember teamMember)
         {
             List<Planet> opponentPlanets = GetOpponentOrFreePlanets(teamMember);
 
-            if (planets.Count == 0)
+            if (opponentPlanets.Count == 0)
             {
                 return null;
             }
 
             int randomIndex = Random.Range(0, opponentPlanets.Count);
             return opponentPlanets[randomIndex];
+        }
+
+        public Planet GetMemberStrongestPlanet(TeamMember teamMember)
+        {
+            List<Planet> controlledPlanets = GetControlledPlanets(teamMember);
+
+            Planet strongestPlanet = null;
+            foreach (Planet planet in controlledPlanets)
+            {
+                if (strongestPlanet == null || planet.currentShipsCount > strongestPlanet.currentShipsCount)
+                {
+                    strongestPlanet = planet;
+                }
+            }
+
+            return strongestPlanet;
+        }
+
+        public Planet GetOpponentOrFreeWeakestPlanet(TeamMember teamMember)
+        {
+            List<Planet> controlledPlanets = GetOpponentOrFreePlanets(teamMember);
+
+            Planet weakestPlanet = null;
+            foreach (Planet planet in controlledPlanets)
+            {
+                if (weakestPlanet == null || planet.currentShipsCount < weakestPlanet.currentShipsCount)
+                {
+                    weakestPlanet = planet;
+                }
+            }
+
+            return weakestPlanet;
         }
     }
 }

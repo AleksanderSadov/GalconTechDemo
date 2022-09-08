@@ -8,6 +8,7 @@ namespace GalconTechDemo.Gameplay
         AttackRandom,
         SelectAttack,
         AttackPlayer,
+        AttackCapture,
     }
 
     [RequireComponent(typeof(TeamMember))]
@@ -31,7 +32,7 @@ namespace GalconTechDemo.Gameplay
 
         private void Start()
         {
-            currentAIState = new SelectAttackAIState();
+            currentAIState = new AttackCooldownAIState();
             currentAIState.Init(gameConfig, planetsModel, teamMember);
             currentAIStateLabel = currentAIState.stateLabel;
         }
