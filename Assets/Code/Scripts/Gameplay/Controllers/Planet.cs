@@ -6,7 +6,7 @@ namespace GalconTechDemo.Gameplay
     [RequireComponent(typeof(ShipsGeneration))]
     public class Planet : MonoBehaviour, IRadius
     {
-        public PlanetConfig config;
+        public GameConfig config;
 
         public TeamMember controlledBy => ownership.controlledBy;
         public int currentShipsCount
@@ -20,6 +20,8 @@ namespace GalconTechDemo.Gameplay
 
         private void Awake()
         {
+            config = FindObjectOfType<GameModel>().gameConfig;
+
             ownership = GetComponent<Ownership>();
             shipsGeneration = GetComponent<ShipsGeneration>();
 
@@ -59,8 +61,8 @@ namespace GalconTechDemo.Gameplay
         private void SetRandomShipsOnStart()
         {
             shipsGeneration.currentShipsCount = Random.Range(
-                config.minShipsOnStart,
-                config.maxShipsOnStart + 1
+                config.shipsMinOnPlanetStart,
+                config.shipsMaxOnPlanetStart + 1
             );
         }
 

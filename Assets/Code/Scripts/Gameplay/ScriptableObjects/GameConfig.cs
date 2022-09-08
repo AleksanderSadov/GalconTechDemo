@@ -16,8 +16,11 @@ namespace GalconTechDemo.Gameplay
         public int planetsMaxGenerationTries = 50;
 
         [Header("Ships")]
+        public int shipsMinOnPlanetStart = 1;
+        public int shipsMaxOnPlanetStart = 50;
         [Tooltip("Number of ships on your's and enemies' first planet when game starts")]
-        public int shipsOnFirstPlanet = 50;
+        public int shipsOnFirstControlledPlanet = 50;
+        public int shipsGenerationSpeed = 5;
         [Tooltip("Percentage of ships deployed from planet when attacking another planet")]
         [Range(0.0f, 1.0f)]
         public float shipsAttackPercentage;

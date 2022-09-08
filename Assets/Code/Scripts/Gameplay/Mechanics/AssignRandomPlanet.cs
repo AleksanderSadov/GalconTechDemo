@@ -33,7 +33,7 @@ namespace GalconTechDemo.Gameplay
         {
             Planet planet = gameModel.planetsModel.GetRandomNotControlledPlanet();
             planet.AssignTo(teamMember);
-            planet.currentShipsCount = gameModel.gameConfig.shipsOnFirstPlanet;
+            planet.currentShipsCount = gameModel.gameConfig.shipsOnFirstControlledPlanet;
         }
     }
 }
