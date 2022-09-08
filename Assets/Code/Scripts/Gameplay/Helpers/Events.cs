@@ -11,6 +11,8 @@ namespace GalconTechDemo.Gameplay
         public static PlanetExitHoverEvent PlanetExitHoverEvent = new PlanetExitHoverEvent();
         public static PlaneClickedEvent PlaneClicked = new PlaneClickedEvent();
         public static AttackPlanetEvent AttackPlanetEvent = new AttackPlanetEvent();
+        public static PlanetCapturedEvent PlanetCapturedEvent = new PlanetCapturedEvent();
+        public static GameOverEvent GameOverEvent = new GameOverEvent();
     }
 
     public class GameStartedEvent : GameEvent
@@ -51,5 +53,15 @@ namespace GalconTechDemo.Gameplay
     {
         public Planet attackerPlanet;
         public Planet defenderPlanet;
+    }
+
+    public class PlanetCapturedEvent : GameEvent
+    {
+        public Planet planet;
+    }
+
+    public class GameOverEvent : GameEvent
+    {
+        public bool isPlayerWon = false;
     }
 }

@@ -33,6 +33,10 @@ namespace GalconTechDemo.Gameplay
                 if (defenderPlanet.currentShipsCount <= 0)
                 {
                     defenderPlanet.AssignTo(attacker);
+
+                    PlanetCapturedEvent planetCapturedEvent = Events.PlanetCapturedEvent;
+                    planetCapturedEvent.planet = defenderPlanet;
+                    EventsManager.Broadcast(planetCapturedEvent);
                 }
             }
             else
