@@ -41,14 +41,20 @@ namespace GalconTechDemo.Gameplay
             }
 
             lastSelectedPlanet = planet;
-            AddHighlight(planet);
+
+            PlanetSelectedEvent planetSelectedEvent = Events.PlanetSelectedEvent;
+            planetSelectedEvent.planet = lastSelectedPlanet;
+            EventsManager.Broadcast(planetSelectedEvent);
         }
 
         private void DeselectPlanet()
         {
             if (lastSelectedPlanet != null)
             {
-                RemoveHighlight(lastSelectedPlanet);
+                PlanetDeselectedEvent planetDeselectedEvent = Events.PlanetDeselectedEvent;
+                planetDeselectedEvent.planet = lastSelectedPlanet;
+                EventsManager.Broadcast(planetDeselectedEvent);
+
                 lastSelectedPlanet = null;
             }
         }
@@ -56,24 +62,6 @@ namespace GalconTechDemo.Gameplay
         private void AttackPlanet(Planet defenderPlanet)
         {
             AttackHelper.AttackPlanet(lastSelectedPlanet, defenderPlanet);
-        }
-
-        private void AddHighlight(Planet planet)
-        {
-            IHighlight highlighter = planet.GetComponentInChildren<IHighlight>();
-            if (highlighter != null)
-            {
-                highlighter.AddHighlight();
-            }
-        }
-
-        private void RemoveHighlight(Planet planet)
-        {
-            IHighlight highlighter = planet.GetComponentInChildren<IHighlight>();
-            if (highlighter != null)
-            {
-                highlighter.RemoveHighlight();
-            }
         }
     }
 }

@@ -3,18 +3,18 @@ using UnityEngine;
 
 namespace GalconTechDemo.UI
 {
-    public class ImageHighlighter : MonoBehaviour, ISelectHighlight
+    public class OverlapHighlighter : MonoBehaviour, IHoverHighlight
     {
-        public GameObject hightlightImage;
+        public GameObject overlapObject;
 
         public void AddHighlight()
         {
-            hightlightImage?.SetActive(true);
+            overlapObject.SetActive(true);
         }
 
         public void RemoveHighlight()
         {
-            hightlightImage?.SetActive(false);
+            overlapObject.SetActive(false);
         }
     }
 }

@@ -68,9 +68,23 @@ namespace GalconTechDemo.Gameplay
 
         private void OnMouseDown()
         {
-            PlanetClickedEvent planetSelectedEvent = Events.PlanetSelectedEvent;
-            planetSelectedEvent.planet = this;
-            EventsManager.Broadcast(planetSelectedEvent);
+            PlanetClickedEvent planetClickedEvent = Events.PlanetClickedEvent;
+            planetClickedEvent.planet = this;
+            EventsManager.Broadcast(planetClickedEvent);
+        }
+
+        private void OnMouseEnter()
+        {
+            PlanetEnterHoverEvent planetEnterHoverEvent = Events.PlanetEnterHoverEvent;
+            planetEnterHoverEvent.planet = this;
+            EventsManager.Broadcast(planetEnterHoverEvent);
+        }
+
+        private void OnMouseExit()
+        {
+            PlanetExitHoverEvent planetExitHoverEvent = Events.PlanetExitHoverEvent;
+            planetExitHoverEvent.planet = this;
+            EventsManager.Broadcast(planetExitHoverEvent);
         }
     }
 }
