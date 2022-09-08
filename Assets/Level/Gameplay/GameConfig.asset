@@ -16,6 +16,11 @@ MonoBehaviour:
   planetsMinScale: 1.5
   planetsMaxScale: 2.5
   planetsMaxGenerationTries: 100000
-  shipsOnFirstPlanet: 50
+  shipsMinOnPlanetStart: 1
+  shipsMaxOnPlanetStart: 50
+  shipsOnFirstControlledPlanet: 50
+  shipsGenerationSpeed: 5
   shipsAttackPercentage: 0.5
+  shipsFlySpeed: 10
+  shipsFlyAcceleration: 10
   enemyDecisionsCooldown: 5
